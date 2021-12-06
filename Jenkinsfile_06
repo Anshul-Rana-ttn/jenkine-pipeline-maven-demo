@@ -78,14 +78,12 @@ def getJarName() {
 }
 
 def getVersion() {
-   // def pom = readMavenPom file: './pom.xml'
-    def pom = sh 'Maven versions:set-property -Dproperty=some-key -DnewVersion=some-value -DgenerateBackupPoms=false'
+    def pom = readMavenPom file: './pom.xml'
     return pom.version
 }
 
 def getName() {
-   // def pom = readMavenPom file: './pom.xml'
-    def pom = sh 'Maven versions:set-property -Dproperty=some-key -DnewVersion=some-value -DgenerateBackupPoms=false'
+    def pom = readMavenPom file: './pom.xml'
     return pom.name
 }
 
