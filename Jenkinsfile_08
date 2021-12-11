@@ -64,7 +64,7 @@ pipeline {
     stage('Deploy in ECS') {
     steps {
         script {
-            sh "aws ecs register-task-definition \ --cli-input-json file://mytaskdefinition.json"
+            sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             
         }
         
