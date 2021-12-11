@@ -65,6 +65,8 @@ pipeline {
     steps {
         script {
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
+            sh "aws ecs list-task-definitions"
+            sh "aws ecs describe-task-definition --task-definition mytaskdefinition"
             
         }
         
