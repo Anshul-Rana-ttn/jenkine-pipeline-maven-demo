@@ -5,6 +5,7 @@ pipeline {
         AWS_DEFAULT_REGION="us-east-1"
         AWS_SECRET="mysecret1"
         ARN=sh "aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  | jq --raw-output '.ARN'"
+        ARN_test = sh(script: 'aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  | jq --raw-output '.ARN', returnStdout: true)
     }
 
     stages {
@@ -29,7 +30,7 @@ pipeline {
     steps {
         script {
            
-            sh "${ARN}"
+            sh "${ARN_test}"
             sh "sed -i \"s;SAMPLE_CEPH;apples;g\" mytaskdefinition.json"
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             //sh "aws ecs list-task-definitions"
