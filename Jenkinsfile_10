@@ -3,6 +3,7 @@ pipeline {
     environment {
         AWS_ACCOUNT_ID="004024412519"
         AWS_DEFAULT_REGION="us-east-1"
+        ARN_tag=aws secretsmanager get-secret-value --region us-east-1 --secret-id mysecret1  |  jq --raw-output '.ARN'
     }
 
     stages {
@@ -26,7 +27,7 @@ pipeline {
     stage('Deploy in ECS') {
     steps {
         script {
-            sh "sed -i \"s;SAMPLE_CEPH;${AWS_DEFAULT_REGION};g\" mytaskdefinition.json"
+            sh "sed -i \"s;SAMPLE_CEPH;${ARN_tag};g\" mytaskdefinition.json"
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
             sh "aws ecs describe-task-definition --task-definition mytaskdefinition"
