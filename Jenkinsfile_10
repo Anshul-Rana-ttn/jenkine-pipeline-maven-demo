@@ -4,7 +4,7 @@ pipeline {
         AWS_ACCOUNT_ID="004024412519"
         AWS_DEFAULT_REGION="us-east-1"
         AWS_SECRET="mysecret1"
-        ARN=aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  |  jq --raw-output '.ARN'
+        ARN=aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  |jq --raw-output '.ARN'
     }
 
     stages {
