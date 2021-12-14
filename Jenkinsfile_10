@@ -30,7 +30,7 @@ pipeline {
     steps {
         script {
             sh "echo ${ARN_test}"
-            sh "sed -i \"s;SAMPLE_CEPH;${ARN_test};e\" mytaskdefinition.json"
+            sh "sed -i \"s;SAMPLE_CEPH;aapplws;g\" mytaskdefinition.json"
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
             sh "aws ecs describe-task-definition --task-definition mytaskdefinition"
