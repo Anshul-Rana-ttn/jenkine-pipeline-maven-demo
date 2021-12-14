@@ -5,7 +5,8 @@ pipeline {
         AWS_DEFAULT_REGION="us-east-1"
         AWS_SECRET="mysecret1"
         ARN=sh "aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  | jq --raw-output '.ARN'"
-        ARN_test = sh(script: "aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  | jq --raw-output '.ARN'", returnStdout: true)
+        //ARN_test = sh(script: "aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  | jq --raw-output '.ARN'", returnStdout: true)
+        ARN_test=$(aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  | jq --raw-output '.ARN)
     }
 
     stages {
@@ -33,7 +34,7 @@ pipeline {
      
            
            
-            sh 'sed -i "s/SAMPLE_CEPH/\${ARN_test}/g" mytaskdefinition.json'
+            //sh 'sed -i "s/SAMPLE_CEPH/\${ARN_test}/g" mytaskdefinition.json'
 
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
