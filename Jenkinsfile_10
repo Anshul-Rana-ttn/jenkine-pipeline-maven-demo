@@ -28,8 +28,8 @@ pipeline {
     stage('Deploy in ECS') {
     steps {
         script {
-            sh "echo ARN"
-            sh "sed -i \"s;SAMPLE_CEPH;${ARN};g\" mytaskdefinition.json"
+            sh "echo ${ARN}"
+            sh "sed -i \"s;SAMPLE_CEPH;"${ARN}";g\" mytaskdefinition.json"
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
             sh "aws ecs describe-task-definition --task-definition mytaskdefinition"
