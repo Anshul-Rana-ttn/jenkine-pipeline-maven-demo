@@ -17,44 +17,8 @@
         {
           "name": "CEPH_DATA",
           "value": "SAMPLE_CEPH"    
-        },
-        {
-          "name": "CEPH_SECRET",
-          "value": "KM@&qp28"
-        },
-        {
-          "name": "CEPH_URL",
-          "value": "http://172.27.100.229:8080"
-        },
-        {
-          "name": "CEPH_USER",
-          "value": "C6-Ceph-test:C6-Ceph-test"
-        },
-        {
-          "name": "CSV_PATH",
-          "value": "/tmp/data"
-        },
-        {
-          "name": "DATA_FEED",
-          "value": "dev_pixalate_datafeed"
-        },
-        {
-          "name": "DC",
-          "value": "int1"
-        },
-        {
-          "name": "ENV",
-          "value": "int"
-        },
-        {
-          "name": "XMS",
-          "value": "2G"
-        },
-        {
-          "name": "XMX",
-          "value": "4G"
         }
-      ],
+        ],
     "essential": true,
     "entryPoint": [
       "sh",
