@@ -26,7 +26,7 @@ pipeline {
     stage('Deploy in ECS') {
     steps {
         script {
-            sh "sed -i \"s;SAMPLE_CEPH;${AWS_DEFAULT_REGION};g\" ${mytaskdefinition}"
+            sh "sed -i \"s;SAMPLE_CEPH;${AWS_DEFAULT_REGION};g\" mytaskdefinition.json"
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
             sh "aws ecs describe-task-definition --task-definition mytaskdefinition"
