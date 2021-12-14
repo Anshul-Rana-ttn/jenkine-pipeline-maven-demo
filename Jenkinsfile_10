@@ -34,8 +34,10 @@ pipeline {
      
            
            
-            sh "sed -i "s/SAMPLE_CEPH/${ARN_test}/g" mytaskdefinition.json"
+            //sh "sed -i "s/SAMPLE_CEPH/${ARN_test}/g" mytaskdefinition.json"
             //sh "sed -i "s|SAMPLE_CEPH|$ARN_test|g" "mytaskdefinition.json""
+            
+            sh "sed -i \"s;SAMPLE_CEPH;${ARN_tag};g\" ${mytaskdefination.json}"
 
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
