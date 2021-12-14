@@ -16,7 +16,7 @@
         },
         {
           "name": "CEPH_DATA",
-          "value": "SAMPLE_CEPH_DATA"
+          "value": "SAMPLE_CEPH"
         },
         {
           "name": "CEPH_SECRET",
