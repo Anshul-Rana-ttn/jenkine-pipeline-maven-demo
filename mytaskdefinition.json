@@ -16,7 +16,7 @@
         },
         {
           "name": "CEPH_DATA",
-          "value": "SAMPLE_CEPH"
+          "value": "SAMPLE_CEPH"       sh "sed -i 's/SAMPLE_CEPH=.*$/SAMPLE_CEPH=def ghi/g' hpq_sf_attach_wf_param.txt"
         },
         {
           "name": "CEPH_SECRET",
