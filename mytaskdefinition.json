@@ -2,7 +2,7 @@
   "family": "mytaskdefinition",
   "networkMode": "awsvpc",
   "containerDefinitions": [{
-    "name": "myappv33",
+    "name": "myappv313",
     "image": "httpd:2.4",
     "portMappings": [{
       "containerPort": 80,
