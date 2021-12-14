@@ -28,7 +28,7 @@ pipeline {
     stage('Deploy in ECS') {
     steps {
         script {
-           
+            sh "aws secretsmanager get-secret-value --region us-east-1 --secret-id ${AWS_SECRET}  |jq --raw-output '.ARN'"=ARN
             sh "sed -i \"s;SAMPLE_CEPH;${ARN};g\" mytaskdefinition.json"
             sh "aws ecs register-task-definition --cli-input-json file://mytaskdefinition.json"
             sh "aws ecs list-task-definitions"
